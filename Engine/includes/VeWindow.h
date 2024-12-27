@@ -12,6 +12,8 @@ namespace MeletEngine
 		VeWindow& operator=(const VeWindow&) = delete;
 
 		bool shouldClose() const { return glfwWindowShouldClose(window); }
+
+		void createWindowSurface(VkInstance instance, VkSurfaceKHR* surface);
 	private:
 		void initWindow();
 

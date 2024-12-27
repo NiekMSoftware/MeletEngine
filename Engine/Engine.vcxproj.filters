@@ -31,6 +31,9 @@
     <ClCompile Include="source\VePipeline.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="includes\VeDevice.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes\precomp.h" />
@@ -41,6 +44,9 @@
       <Filter>includes\apps</Filter>
     </ClInclude>
     <ClInclude Include="includes\VePipeline.h">
+      <Filter>includes</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\VeDevice.h">
       <Filter>includes</Filter>
     </ClInclude>
   </ItemGroup>

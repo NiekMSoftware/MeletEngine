@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="includes\VeDevice.cpp" />
     <ClCompile Include="source\VePipeline.cpp" />
     <ClCompile Include="source\apps\FirstApp.cpp" />
     <ClCompile Include="main.cpp" />
@@ -147,6 +148,7 @@
   <ItemGroup>
     <ClInclude Include="includes\apps\FirstApp.h" />
     <ClInclude Include="includes\precomp.h" />
+    <ClInclude Include="includes\VeDevice.h" />
     <ClInclude Include="includes\VePipeline.h" />
     <ClInclude Include="includes\VeWindow.h" />
   </ItemGroup>

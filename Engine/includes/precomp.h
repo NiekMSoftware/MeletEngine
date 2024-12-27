@@ -13,6 +13,9 @@
 #include <string>
 #include <vector>
 
+#include <set>
+#include <unordered_set>
+
 // this is hideous, optional
 using namespace std;
 
@@ -23,6 +26,7 @@ using namespace std;
 // engine
 #include "VePipeline.h"
 #include "VeWindow.h"
+#include "VeDevice.h"
 
 // applications
 #include "FirstApp.h"

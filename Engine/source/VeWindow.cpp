@@ -23,4 +23,8 @@ namespace MeletEngine
 
 		window = glfwCreateWindow(width, height, engineName.c_str(), nullptr, nullptr);
 	}
+
+	void VeWindow::createWindowSurface(VkInstance instance, VkSurfaceKHR* surface)
+	{
+	}
 }
