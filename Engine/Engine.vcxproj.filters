@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="includes">
+      <UniqueIdentifier>{1c46e32b-dffe-4893-8d94-fecaa606d3ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source">
+      <UniqueIdentifier>{cb6eb3c6-1848-4010-90aa-a41b17123ca9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="includes\apps">
+      <UniqueIdentifier>{24683152-d4b0-4b12-b590-5c1f9b333bf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\apps">
+      <UniqueIdentifier>{ce926352-d93e-494f-9097-5f9be48a53af}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="source\VeWindow.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\FirstApp.cpp">
+      <Filter>source\apps</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="includes\precomp.h" />
+    <ClInclude Include="includes\VeWindow.h">
+      <Filter>includes</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\FirstApp.h">
+      <Filter>includes\apps</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
