@@ -19,7 +19,7 @@
     <ClCompile Include="source\VeWindow.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="source\FirstApp.cpp">
+    <ClCompile Include="source\apps\FirstApp.cpp">
       <Filter>source\apps</Filter>
     </ClCompile>
   </ItemGroup>
@@ -28,7 +28,7 @@
     <ClInclude Include="includes\VeWindow.h">
       <Filter>includes</Filter>
     </ClInclude>
-    <ClInclude Include="includes\FirstApp.h">
+    <ClInclude Include="includes\apps\FirstApp.h">
       <Filter>includes\apps</Filter>
     </ClInclude>
   </ItemGroup>
