@@ -148,6 +148,13 @@
     <ClInclude Include="includes\precomp.h" />
     <ClInclude Include="includes\VeWindow.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="compile.bat" />
+    <None Include="shaders\simple\simple_shader.frag" />
+    <None Include="shaders\simple\simple_shader.frag.spv" />
+    <None Include="shaders\simple\simple_shader.vert" />
+    <None Include="shaders\simple\simple_shader.vert.spv" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

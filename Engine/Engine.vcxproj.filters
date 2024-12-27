@@ -13,6 +13,9 @@
     <Filter Include="source\apps">
       <UniqueIdentifier>{ce926352-d93e-494f-9097-5f9be48a53af}</UniqueIdentifier>
     </Filter>
+    <Filter Include="shaders">
+      <UniqueIdentifier>{d2c5eaf0-cc67-4004-8929-442760872a0d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -31,5 +34,16 @@
     <ClInclude Include="includes\apps\FirstApp.h">
       <Filter>includes\apps</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shaders\simple\simple_shader.vert">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="shaders\simple\simple_shader.frag">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="compile.bat" />
+    <None Include="shaders\simple\simple_shader.frag.spv" />
+    <None Include="shaders\simple\simple_shader.vert.spv" />
   </ItemGroup>
 </Project>
