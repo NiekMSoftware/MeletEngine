@@ -16,6 +16,9 @@
     <Filter Include="shaders">
       <UniqueIdentifier>{d2c5eaf0-cc67-4004-8929-442760872a0d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="shaders\simple">
+      <UniqueIdentifier>{5d7c264d-2d96-43d6-9105-aec5dcbc357a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -24,6 +27,9 @@
     </ClCompile>
     <ClCompile Include="source\apps\FirstApp.cpp">
       <Filter>source\apps</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VePipeline.cpp">
+      <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -34,16 +40,23 @@
     <ClInclude Include="includes\apps\FirstApp.h">
       <Filter>includes\apps</Filter>
     </ClInclude>
+    <ClInclude Include="includes\VePipeline.h">
+      <Filter>includes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="compile.bat" />
+    <None Include="shaders\simple\simple_shader.frag.spv">
+      <Filter>shaders\simple</Filter>
+    </None>
+    <None Include="shaders\simple\simple_shader.vert.spv">
+      <Filter>shaders\simple</Filter>
+    </None>
     <None Include="shaders\simple\simple_shader.vert">
-      <Filter>shaders</Filter>
+      <Filter>shaders\simple</Filter>
     </None>
     <None Include="shaders\simple\simple_shader.frag">
-      <Filter>shaders</Filter>
+      <Filter>shaders\simple</Filter>
     </None>
-    <None Include="compile.bat" />
-    <None Include="shaders\simple\simple_shader.frag.spv" />
-    <None Include="shaders\simple\simple_shader.vert.spv" />
   </ItemGroup>
 </Project>

@@ -11,5 +11,6 @@ namespace MeletEngine::Apps
 		void run();
 	private:
 		VeWindow veWindow{ WIDTH, HEIGHT, "Hello, Vulkan!" };
+		VePipeline vePipeline{"shaders/simple/simple_shader.vert.spv", "shaders/simple/simple_shader.frag.spv"};
 	};
 }
