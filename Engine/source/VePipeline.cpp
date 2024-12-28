@@ -20,7 +20,13 @@ namespace MeletEngine
 
 	PipelineConfigInfo VePipeline::defaultPipeLineConfigInfo(uint32_t width, uint32_t height)
 	{
-		PipelineConfigInfo configInfo;
+		PipelineConfigInfo configInfo{};
+
+		// config input assembly info
+		configInfo.inputAssemblyInfo = {};
+		configInfo.inputAssemblyInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
+		configInfo.inputAssemblyInfo.topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST;
+		configInfo.inputAssemblyInfo.primitiveRestartEnable = VK_FALSE;
 
 		// config viewport
 		configInfo.viewport.x = 0.0f;
@@ -33,18 +39,6 @@ namespace MeletEngine
 		// config scissor
 		configInfo.scissor.offset = { .x= 0, .y= 0};
 		configInfo.scissor.extent = { .width= width, .height= height};
-
-		// config input assembly info
-		configInfo.inputAssemblyInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
-		configInfo.inputAssemblyInfo.topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST;
-		configInfo.inputAssemblyInfo.primitiveRestartEnable = VK_FALSE;
-
-		// config viewport with scissor info
-		configInfo.viewportInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO;
-		configInfo.viewportInfo.viewportCount = 1;
-		configInfo.viewportInfo.pViewports = &configInfo.viewport;
-		configInfo.viewportInfo.scissorCount = 1;
-		configInfo.viewportInfo.pScissors = &configInfo.scissor;
 
 		// rasterization stage
 		configInfo.rasterizationInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO;
@@ -83,7 +77,7 @@ namespace MeletEngine
 		configInfo.colorBlendAttachment.dstAlphaBlendFactor = VK_BLEND_FACTOR_ZERO;
 		configInfo.colorBlendAttachment.alphaBlendOp = VK_BLEND_OP_ADD;
 
-		configInfo.colorBlendInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_COLOR_WRITE_CREATE_INFO_EXT;
+		configInfo.colorBlendInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO;
 		configInfo.colorBlendInfo.logicOpEnable = VK_FALSE;
 		configInfo.colorBlendInfo.logicOp = VK_LOGIC_OP_COPY;
 		configInfo.colorBlendInfo.attachmentCount = 1;
@@ -156,20 +150,28 @@ namespace MeletEngine
 		shaderStages[1].pNext = nullptr;
 		shaderStages[1].pSpecializationInfo = nullptr;
 
-		VkPipelineVertexInputStateCreateInfo vertexInputInfo;
+		VkPipelineVertexInputStateCreateInfo vertexInputInfo{};
 		vertexInputInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
 		vertexInputInfo.vertexAttributeDescriptionCount = 0;
 		vertexInputInfo.vertexBindingDescriptionCount = 0;
 		vertexInputInfo.pVertexAttributeDescriptions = nullptr;
 		vertexInputInfo.pVertexBindingDescriptions = nullptr;
 
-		VkGraphicsPipelineCreateInfo pipelineInfo;
+		// config viewport with scissor info
+		VkPipelineViewportStateCreateInfo viewportInfo{};
+		viewportInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO;
+		viewportInfo.viewportCount = 1;
+		viewportInfo.pViewports = &config.viewport;
+		viewportInfo.scissorCount = 1;
+		viewportInfo.pScissors = &config.scissor;
+
+		VkGraphicsPipelineCreateInfo pipelineInfo{};
 		pipelineInfo.sType = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO;
 		pipelineInfo.stageCount = 2;
 		pipelineInfo.pStages = shaderStages;
 		pipelineInfo.pVertexInputState = &vertexInputInfo;
 		pipelineInfo.pInputAssemblyState = &config.inputAssemblyInfo;
-		pipelineInfo.pViewportState = &config.viewportInfo;
+		pipelineInfo.pViewportState = &viewportInfo;
 		pipelineInfo.pRasterizationState = &config.rasterizationInfo;
 		pipelineInfo.pMultisampleState = &config.multiSampleInfo;
 		pipelineInfo.pColorBlendState = &config.colorBlendInfo;
@@ -191,14 +193,13 @@ namespace MeletEngine
 
 	void VePipeline::createShaderModule(const std::vector<char>& code, VkShaderModule* shaderModule)
 	{
-		VkShaderModuleCreateInfo createInfo;
+		VkShaderModuleCreateInfo createInfo{};
 		createInfo.sType = VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO;
 		createInfo.codeSize = code.size();
 		createInfo.pCode = reinterpret_cast<const uint32_t*>(code.data());
 
-		if (vkCreateShaderModule(veDevice.device(), &createInfo, nullptr, shaderModule) != VK_SUCCESS)
-		{
-			throw std::runtime_error("Failed to create Shader Module");
+		if (vkCreateShaderModule(veDevice.device(), &createInfo, nullptr, shaderModule) != VK_SUCCESS) {
+			throw std::runtime_error("failed to create shader module");
 		}
 	}
 }

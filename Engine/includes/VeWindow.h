@@ -12,6 +12,7 @@ namespace MeletEngine
 		VeWindow& operator=(const VeWindow&) = delete;
 
 		bool shouldClose() const { return glfwWindowShouldClose(window); }
+		VkExtent2D getExtent() const { return { static_cast<uint32_t>(width), static_cast<uint32_t>(height)}; }
 
 		void createWindowSurface(VkInstance instance, VkSurfaceKHR* surface);
 	private:

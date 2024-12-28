@@ -1,22 +1,23 @@
 ﻿#pragma once
 
-// std
+// std io
 #include <iostream>
 #include <fstream>
 #include <stdexcept>
 #include <cstdlib>
-#include <assert.h>
-
 #include <print>
 #include <format>
+#include <assert.h>
 
-// common
+// containers
 #include <string>
 #include <vector>
-
 #include <array>
 #include <set>
 #include <unordered_set>
+
+// memory
+#include <memory>
 
 // this is hideous, optional
 using namespace std;

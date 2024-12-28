@@ -281,6 +281,7 @@ namespace MeletEngine
         if (deviceCount == 0) {
             throw std::runtime_error("failed to find GPUs with Vulkan support!");
         }
+        std::println("Device count: {}", deviceCount);
         std::vector<VkPhysicalDevice> devices(deviceCount);
         vkEnumeratePhysicalDevices(instance, &deviceCount, devices.data());
 
@@ -296,6 +297,7 @@ namespace MeletEngine
         }
 
         vkGetPhysicalDeviceProperties(physicalDevice, &VkProperties);
+        std::println("Physical device: {}", VkProperties.deviceName);
     }
 
     void VeDevice::createLogicalDevice()
@@ -422,7 +424,7 @@ namespace MeletEngine
 
     QueueFamilyIndices VeDevice::findQueueFamilies(VkPhysicalDevice device) const
     {
-        QueueFamilyIndices indices;
+        QueueFamilyIndices indices{};
 
         uint32_t queueFamilyCount = 0;
         vkGetPhysicalDeviceQueueFamilyProperties(device, &queueFamilyCount, nullptr);
@@ -472,15 +474,17 @@ namespace MeletEngine
         std::vector<VkExtensionProperties> extensions(extensionCount);
         vkEnumerateInstanceExtensionProperties(nullptr, &extensionCount, extensions.data());
 
+        std::println("Available extensions: ");
         std::unordered_set<std::string> available;
         for (const auto& extension : extensions) {
+            std::println("\t{}", extension.extensionName);
             available.insert(extension.extensionName);
         }
 
+        std::println("Required extensions: ");
         auto requiredExtensions = getRequiredExtensions();
-
         for (const auto& required : requiredExtensions) {
-
+            std::println("\t{}", required);
             if (!available.contains(required)) {
                 throw std::runtime_error("Missing required glfw extension");
             }
@@ -505,7 +509,7 @@ namespace MeletEngine
 
     SwpChainSupportDetails VeDevice::querySwapChainSupport(VkPhysicalDevice device) const
     {
-        SwpChainSupportDetails details;
+        SwpChainSupportDetails details{};
         vkGetPhysicalDeviceSurfaceCapabilitiesKHR(device, m_surface, &details.capabilities);
 
         uint32_t formatCount;

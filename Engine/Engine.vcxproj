@@ -139,7 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="includes\VeSwapChain.cpp" />
+    <ClCompile Include="source\VeSwapChain.cpp" />
     <ClCompile Include="source\VeDevice.cpp" />
     <ClCompile Include="source\VePipeline.cpp" />
     <ClCompile Include="source\apps\FirstApp.cpp" />

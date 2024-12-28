@@ -34,7 +34,7 @@
     <ClCompile Include="source\VeDevice.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="includes\VeSwapChain.cpp">
+    <ClCompile Include="source\VeSwapChain.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>
