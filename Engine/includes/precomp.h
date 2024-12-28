@@ -5,6 +5,7 @@
 #include <fstream>
 #include <stdexcept>
 #include <cstdlib>
+#include <assert.h>
 
 #include <print>
 #include <format>

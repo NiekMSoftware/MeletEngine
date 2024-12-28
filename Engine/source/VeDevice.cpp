@@ -7,8 +7,9 @@ namespace MeletEngine
         VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
         VkDebugUtilsMessageTypeFlagsEXT messageType,
         const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,
-        void* pUserData) {
-        std::cerr << "validation layer: " << pCallbackData->pMessage << std::endl;
+        void* pUserData)
+	{
+        std::println("validation layer: {}", pCallbackData->pMessage);
 
         return VK_FALSE;
     }
@@ -17,7 +18,8 @@ namespace MeletEngine
         const VkInstance instance,
         const VkDebugUtilsMessengerCreateInfoEXT* pCreateInfo,
         const VkAllocationCallbacks* pAllocator,
-        VkDebugUtilsMessengerEXT* pDebugMessenger) {
+        VkDebugUtilsMessengerEXT* pDebugMessenger)
+	{
         auto func = reinterpret_cast<PFN_vkCreateDebugUtilsMessengerEXT>(vkGetInstanceProcAddr(instance, "vkCreateDebugUtilsMessengerEXT"));
         if (func != nullptr) {
             return func(instance, pCreateInfo, pAllocator, pDebugMessenger);
@@ -279,7 +281,6 @@ namespace MeletEngine
         if (deviceCount == 0) {
             throw std::runtime_error("failed to find GPUs with Vulkan support!");
         }
-        std::cout << "Device count: " << deviceCount << '\n';
         std::vector<VkPhysicalDevice> devices(deviceCount);
         vkEnumeratePhysicalDevices(instance, &deviceCount, devices.data());
 
@@ -295,7 +296,6 @@ namespace MeletEngine
         }
 
         vkGetPhysicalDeviceProperties(physicalDevice, &VkProperties);
-        std::cout << "physical device: " << VkProperties.deviceName << '\n';
     }
 
     void VeDevice::createLogicalDevice()
@@ -472,18 +472,14 @@ namespace MeletEngine
         std::vector<VkExtensionProperties> extensions(extensionCount);
         vkEnumerateInstanceExtensionProperties(nullptr, &extensionCount, extensions.data());
 
-        std::println("available extensions: ");
         std::unordered_set<std::string> available;
         for (const auto& extension : extensions) {
-            std::println("\t{}", extension.extensionName);
             available.insert(extension.extensionName);
         }
 
-        std::println("required extensions: ");
         auto requiredExtensions = getRequiredExtensions();
 
         for (const auto& required : requiredExtensions) {
-            std::println("\t{}", required);
 
             if (!available.contains(required)) {
                 throw std::runtime_error("Missing required glfw extension");
