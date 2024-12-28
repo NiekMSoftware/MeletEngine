@@ -34,6 +34,9 @@
     <ClCompile Include="source\VeDevice.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="includes\VeSwapChain.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes\precomp.h" />
@@ -47,6 +50,9 @@
       <Filter>includes</Filter>
     </ClInclude>
     <ClInclude Include="includes\VeDevice.h">
+      <Filter>includes</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\VeSwapChain.h">
       <Filter>includes</Filter>
     </ClInclude>
   </ItemGroup>

@@ -14,6 +14,7 @@
 #include <string>
 #include <vector>
 
+#include <array>
 #include <set>
 #include <unordered_set>
 
@@ -26,6 +27,7 @@ using namespace std;
 
 // engine
 #include "VePipeline.h"
+#include "VeSwapChain.h"
 #include "VeWindow.h"
 #include "VeDevice.h"
 
