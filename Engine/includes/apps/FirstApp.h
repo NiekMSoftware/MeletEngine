@@ -15,7 +15,10 @@ namespace MeletEngine::Apps
 		FirstApp operator=(const FirstApp&) = delete;
 
 		void run();
+
 	private:
+		void sierpinski(std::vector<VeModel::Vertex>& vertices, int depth, glm::vec2 left, glm::vec2 right, glm::vec2 top);
+		void loadModels();
 		void createPipelineLayout();
 		void createPipeline();
 		void createCommandBuffers();
@@ -28,5 +31,7 @@ namespace MeletEngine::Apps
 		std::unique_ptr<VePipeline> vePipeline;
 		VkPipelineLayout pipelineLayout;
 		std::vector<VkCommandBuffer> commandBuffers;
+
+		std::unique_ptr<VeModel> veModel;
 	};
 }

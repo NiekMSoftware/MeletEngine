@@ -179,7 +179,7 @@
     </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="includes\VeModel.cpp" />
+    <ClCompile Include="source\VeModel.cpp" />
     <ClCompile Include="source\VeSwapChain.cpp" />
     <ClCompile Include="source\VeDevice.cpp" />
     <ClCompile Include="source\VePipeline.cpp" />
