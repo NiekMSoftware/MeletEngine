@@ -31,6 +31,7 @@ namespace MeletEngine
 		VePipeline(const VePipeline&) = delete;
 		void operator=(const VePipeline&) = delete;
 
+		void bind(VkCommandBuffer commandBuffer);
 		static PipelineConfigInfo defaultPipeLineConfigInfo(uint32_t width, uint32_t height);
 
 	private:
