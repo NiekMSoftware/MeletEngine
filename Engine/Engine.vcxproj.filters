@@ -37,6 +37,9 @@
     <ClCompile Include="source\VeSwapChain.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="includes\VeModel.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes\precomp.h" />
@@ -53,6 +56,9 @@
       <Filter>includes</Filter>
     </ClInclude>
     <ClInclude Include="includes\VeSwapChain.h">
+      <Filter>includes</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\VeModel.h">
       <Filter>includes</Filter>
     </ClInclude>
   </ItemGroup>

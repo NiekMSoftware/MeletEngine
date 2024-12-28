@@ -179,6 +179,7 @@
     </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="includes\VeModel.cpp" />
     <ClCompile Include="source\VeSwapChain.cpp" />
     <ClCompile Include="source\VeDevice.cpp" />
     <ClCompile Include="source\VePipeline.cpp" />
@@ -188,6 +189,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes\apps\FirstApp.h" />
+    <ClInclude Include="includes\VeModel.h" />
     <ClInclude Include="includes\precomp.h" />
     <ClInclude Include="includes\VeDevice.h" />
     <ClInclude Include="includes\VePipeline.h" />
