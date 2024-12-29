@@ -22,13 +22,17 @@ namespace MeletEngine::Apps
 		void createPipelineLayout();
 		void createPipeline();
 		void createCommandBuffers();
+		void freeCommandBuffers();
 		void drawFrame();
+		void recreateSwapChain();
+		void recordCommandBuffer(int imageIndex);
 
 		VeWindow veWindow{ WIDTH, HEIGHT, "Hello, Vulkan!" };
 		VeDevice veDevice{veWindow};
-		VeSwapChain veSwapChain{ veDevice, veWindow.getExtent() };
 
+		std::unique_ptr<VeSwapChain> veSwapChain;
 		std::unique_ptr<VePipeline> vePipeline;
+
 		VkPipelineLayout pipelineLayout;
 		std::vector<VkCommandBuffer> commandBuffers;
 

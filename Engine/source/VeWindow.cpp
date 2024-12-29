@@ -19,9 +19,11 @@ namespace MeletEngine
 	{
 		glfwInit();
 		glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
-		glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+		glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
 
 		window = glfwCreateWindow(width, height, engineName.c_str(), nullptr, nullptr);
+		glfwSetWindowUserPointer(window, this);
+		glfwSetFramebufferSizeCallback(window, frameBufferResizedCallback);
 	}
 
 	void VeWindow::createWindowSurface(VkInstance instance, VkSurfaceKHR* surface)
@@ -30,5 +32,13 @@ namespace MeletEngine
 		{
 			throw std::runtime_error("failed to create window surface");
 		}
+	}
+
+	void VeWindow::frameBufferResizedCallback(GLFWwindow* window, int width, int height)
+	{
+		auto veWindow = reinterpret_cast<VeWindow*>(glfwGetWindowUserPointer(window));
+		veWindow->frameBufferResized = true;
+		veWindow->width = width;
+		veWindow->height = height;
 	}
 }
